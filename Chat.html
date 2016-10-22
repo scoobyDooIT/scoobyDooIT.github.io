@@ -1,0 +1,334 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Chat - Home Help</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body class="left-sidebar">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="index.html" id="logo">Home Help</a></h1>
+								<hr />
+								<p>We end chronic homelessness. For Help:</p>
+								<p>Text (314)667-4809</p>
+								<p>Call (314)667-4809</p>
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li>
+									<a href="Form.html">Help</a>
+									<ul>
+										<li><a href="Form.html">Help Form</a></li>
+										<li><a href="Food.html">Current Information on Food</a></li>
+									</ul>
+								</li>
+								<li><a href="ShelterRegister.html">Register as Shelter</a></li>
+								<li><a href="TestMyHomelessLikelihood.html">How likely am I to becoming homeless?</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<div class="row 200%">
+							<div class="4u 12u(mobile)" id="sidebar">
+								<hr class="first" />
+								<section>
+									<header>
+										<h3><a href="#">Chat</a></h3>
+									</header>
+									<p>
+										Here Shelters and Food Sources can communicate and make arrangements.
+									</p>
+								</section>
+								<hr />
+							</div>
+							<div class="8u 12u(mobile) important(mobile)" id="content">
+								 <body style="background-color:lightgrey;">
+    <!-- CHAT MARKUP -->
+    <div id="scroller" style="color:black" class="scroll-pane">
+      <header>Chat and Ask Questions Here</header>
+      <hr />
+      <hr />
+      <div id="chatMessages">
+      </div>
+      
+    <p><span id="mathTextBox" style="color:black" class="mathquill-editor"></span></p>
+
+    
+    <input type="text" id="Chatbox">
+
+     <button onclick="Send()">Send</button> 
+   </div>
+    <!-- CHAT JAVACRIPT -->
+    <script>
+      // CREATE A REFERENCE TO FIREBASE
+     // Initialize Firebase
+								 var config = {
+								   apiKey: "AIzaSyDL5Fr4fbzimSwRT_mEXS6ZohVmXAociiY",
+								   authDomain: "ghvi-daa53.firebaseapp.com",
+								   databaseURL: "https://ghvi-daa53.firebaseio.com",
+								   storageBucket: "ghvi-daa53.appspot.com",
+								   messagingSenderId: "333277965318"
+								 };
+      var app = firebase.initializeApp(config);
+      var auth = app.auth();
+      var database = firebase.database();
+      //var messagesRef=getMessagesRef();
+      //var messageList = $('#example-messages');
+      var messageList=document.getElementById("chatMessages");
+      var sname="";
+      var counter=0;
+
+      function getMessagesRef(_callback)
+      {
+        try
+        {
+          var user = auth.currentUser;
+          _callback(database.ref('/chat')); 
+        }
+        catch(ex)
+        {
+          console.log(ex);
+          _callback(null);
+        }
+      }
+
+      function Send()
+      {
+        try
+        {
+          //FIELD VALUES
+          var user = auth.currentUser;
+          var uid=	user.uid;
+          var names = user.displayName;
+          sname=names;
+          var username = sname+": ";
+          var message = document.getElementById("Chatbox").value;
+          getMessagesRef(function(messagesRef){
+            if(messagesRef!=null)
+            {
+              console.log("messagesRef not null pushing...");
+              messagesRef.push({name:username, text:message});
+            }
+            else
+            {
+              console.log("messagesRef is null");
+            }
+          });
+          //SAVE DATA TO FIREBASE AND EMPTY FIELD
+          /*var objDiv = document.getElementById("scroller");
+          objDiv.scrollTop = objDiv.scrollHeight; */         
+        }
+        catch(ex)
+        {
+          console.log(ex);
+        }
+      }
+
+      
+
+      auth.onAuthStateChanged(function(user){
+          if (user) {
+            if(counter<1)
+            {
+              // Add a callback that is triggered for each chat message.
+              getMessagesRef(function(messagesRef){
+                messagesRef.limitToLast(6).on('child_added', function (snapshot) {
+                //GET DATA
+                var data = snapshot.val();
+                var username = data.name;
+                var message = data.text.split(':').join(' ');
+
+                var paraUser = document.createElement("b");
+                paraUser.innerHTML=username;
+
+                var paraMessage = document.createElement("span");
+                var nodeMessage = document.createTextNode(message);
+                paraMessage.appendChild(nodeMessage);
+                paraMessage.className="message";
+
+                var element = document.getElementById("chatMessages");
+                element.appendChild(paraUser);
+                element.appendChild(paraMessage);
+
+                var line=document.createElement("HR");
+                element.appendChild(line);
+
+
+                //SCROLL TO BOTTOM OF MESSAGE LIST
+                window.scrollTo(0,document.body.scrollHeight);
+              });
+            });
+            counter++;
+          }
+        }
+        else
+        {
+          window.location.replace("Login.html");
+        }
+      });
+
+    </script>
+
+							</div>
+						</div>
+						<hr />
+				<!-- Carousel -->
+				<section class="carousel">
+					<div class="reel">
+
+						<article>
+							<a href="http://saintmarthas.org/" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://saintmarthas.org/">St. Martha's Hall</a></h3>
+							</header>
+							<p>We are here to help abused women and their children break the cycle of violence in their lives by offering safe, confidential shelter and services.</p>
+						</article>
+
+						<article>
+							<a href="http://www.stpatrickcenter.org/" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://www.stpatrickcenter.org/">St. Patrick's Center</a></h3>
+							</header>
+							<p>Individuals and families build permanent, positive change in their lives through safe and affordable housing, sound mental and physical health, and employment and financial stability.</p>
+						</article>
+
+						<article>
+							<a href="http://gracehillsettlement.org/" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://gracehillsettlement.org/">Grace Hill</a></h3>
+							</header>
+							<p>Grace Hill Settlement House works toward ensuring that every child, every family and every community has the opportunity to succeed.</p>
+						</article>
+
+						<article>
+							<a href="http://www.doorwayshousing.org/" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://www.doorwayshousing.org/">Doorways</a></h3>
+							</header>
+							<p>DOORWAYS’ Supportive Housing Facility (DSHF), opened in 1997 to serve people who were unable to live independently as a result of HIV/AIDS</p>
+						</article>
+
+						<article>
+							<a href="https://www.lydiashouse.org/" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+							<header>
+								<h3><a href="https://www.lydiashouse.org/">Lydia's House</a></h3>
+							</header>
+							<p>Lydia's House works in faith to end domestic violence by being a place of healing and a voice of hope for abused women and their children.</p>
+						</article>
+
+						<article>
+							<a href="http://www.hopehousestl.org/Pages/default.html" class="image featured"><img src="images/pic06.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://www.hopehousestl.org/Pages/default.html">St. Louis Transitional Hope House Inc.</a></h3>
+							</header>
+							<p>It is the mission of St. Louis Transitional Hope House, Inc. to assist each resident family in improving their living skills by providing training in: Job Skills, Life Skills, Health Care, and other support services that will enable them to live independently.</p>
+						</article>
+
+						<article>
+							<a href="http://www.ywcastlouis.org/site/c.elKSIbOWIkJ8H/b.8082301/k.BCAF/Home.htm" class="image featured"><img src="images/pic07.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://www.ywcastlouis.org/site/c.elKSIbOWIkJ8H/b.8082301/k.BCAF/Home.htm">YWCA</a></h3>
+							</header>
+							<p>Our YWCA empowers women by providing economic education, leadership  recognition, transitional housing, support for victims of sexual assault and domestic violence, early childhood education and by working for racial justice.</p>
+						</article>
+
+						<article>
+							<a href="http://twsh.org/" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://twsh.org/">The Women's Safe House</a></h3>
+							</header>
+							<p>The Women’s Safe House provides safe shelter and transitional living services to battered women and their dependent children.</p>
+						</article>
+
+						<article>
+							<a href="http://www.stl.unitedway.org/" class="image featured"><img src="images/pic09.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://www.stl.unitedway.org/">United Way</a></h3>
+							</header>
+							<p>Since 1922, the United Way of Greater St. Louis has partnered with local nonprofit agencies to identify critical issues, create partnerships, and raise funds to help people in Missouri and Illinois.</p>
+						</article>
+
+						<article>
+							<a href="http://humanitri.org/" class="image featured"><img src="images/pic10.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://humanitri.org/">Humanitri</a></h3>
+							</header>
+							<p>Humanitri seeks to move families and individuals from crisis and uncertainty to stability and self-sufficiency.</p>
+						</article>
+
+					</div>
+				</section>
+			</div>
+			
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="12u">
+
+								<!-- Contact -->
+									<section class="contact">
+										<header>
+											<h3>Want Success Stories?</h3>
+										</header>
+										<p>Follow and Visit Us on Social.</p>
+										<ul class="icons">
+											<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+											<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+											<li><a href="#" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
+										</ul>
+									</section>
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; ScoobyDooIt. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+										</ul>
+									</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.onvisible.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+	</body>
+</html>
