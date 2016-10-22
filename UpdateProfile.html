@@ -146,6 +146,19 @@
 															}
 															document.getElementById("currentvacancies").innerHTML=vacancies;
 														});
+															var address=null;
+															database.ref('/users/' + uid+'/profile/address').once('value').then(function(snapshot) {
+												 			if(snapshot.val()!=null)
+												 			{
+												 				address=snapshot.val();
+												 				console.log("address="+address);
+															}
+															else
+															{
+																address="";
+															}
+															document.getElementById("currentaddress").innerHTML=address;
+														});
 														}
 														catch(ex)
 														{
@@ -174,7 +187,9 @@
 												 		var enteredPhoto=document.getElementById("purl").value;
 												 		var userType=document.getElementById("type").value;
 												 		var vacancies=document.getElementById("vacancies").value;
+												 		var address=document.getElementById("address").value;
 												 		var currentUserType=null;
+												 		var currentaddress=null;
 												 		var currentvacancies=null;
 												 		var currentAvatar=null;
 												 		var currentEmail=null;
@@ -222,6 +237,13 @@
 															json[0] = vacancies;
 															console.log("Setting vacancies="+vacancies);
 															database.ref('users/' + uid+'/profile/vacancies').update(json);
+														}
+														if(address!="")
+														{
+															var json = { };
+															json[0] = address;
+															console.log("Setting address="+address);
+															database.ref('users/' + uid+'/profile/address').update(json);	
 														}
 												 		if(enteredPhoto!="")
 												 		{
@@ -294,6 +316,7 @@
 												 		document.getElementById("purl").value="";
 												 		document.getElementById("email").value="";
 												 		document.getElementById("vacancies").value="";
+												 		document.getElementById("address").value="";
 												 		location.reload(); 
 											 		}
 											 		catch(ex)
@@ -313,6 +336,7 @@
 										    <span class="image"><img id="image" src="https://pixabay.com/static/uploads/photo/2014/04/03/10/10/man-310013_960_720.png" alt="Photo" height="150" width="150" /></span><br>
 										    <strong>Shelter Name:</strong> <span id="currentsname"></span><br>
 										    <strong>Email:</strong> <span id="currentemail"></span><br>
+										    <strong>Address:</strong><span id="currentaddress"></span><br>
 										    <strong>Accepts:</strong> <span id="currenttype"></span><br>
 										    <strong>Vacancies:</strong> <span id="currentvacancies"></span><br>
 
@@ -326,6 +350,7 @@
 										    <input type="text" id="purl" placeholder="PhotoURL"><br><br>
 										    <input type="text" id="sname" placeholder="Shelter Name"><br><br>
 										    <input type="text" id="email" placeholder="Email"><br><br>
+										    <input type="text" id="address" placeholder="Address"><br><br>
 										    <select id="type">
 										      <option value="Food">I am giving away free food. </option>
 										      <option value="All">I accept all homeless individuals and families.</option>
