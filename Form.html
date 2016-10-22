@@ -113,24 +113,65 @@
 							    	{
 							    		if(document.getElementsByName("gender")[0].checked==true)
 							    		{
+							    			var possible = new Array(12);
+							    			var counter=0;
 							    			var query = database.ref("users").orderByKey();
 									        query.once("value").then(function(snapshot) {
     											snapshot.forEach(function(childSnapshot) {
-										      // childData will be the actual contents of the child
-										      var childData = childSnapshot.val();
-										      console.log(childData[1].userType);
-										      console.log(childData.val().userType);
-										      console.log(childData.key());
-										      console.log(childData.profile.userType);
+    												var key = childSnapshot.key;
+    												var type=null;
+    												var address=null;
+										      		database.ref('/users/' + key +'/profile/userType').once('value').then(function(snapshot2) {
+												 			if(snapshot.val()!=null)
+												 			{
+												 				if(snapshot.val()=="All" || snapshot.val()=="Men")
+												 				{
+												 					database.ref('/users/' + key +'/profile/address').once('value').then(function(snapshot3) {
+												 					possible[counter]=snapshot3.val();
+												 					});
+												 					console.log(possible);
+												 				}
+															}
+															else
+															{
+									
+															}
+														});
+										      	});
 										  });
-										});
 							    		}
 							    		else
 							    		{
-
+							    			var possible = new Array(12);
+							    			var counter=0;
+							    			var query = database.ref("users").orderByKey();
+									        query.once("value").then(function(snapshot) {
+    											snapshot.forEach(function(childSnapshot) {
+    												var key = childSnapshot.key;
+    												var type=null;
+    												var address=null;
+										      		database.ref('/users/' + key +'/profile/userType').once('value').then(function(snapshot2) {
+												 			if(snapshot.val()!=null)
+												 			{
+												 				if(snapshot.val()=="All" || snapshot.val()=="Women" || snapshot.val()=="WomenAndChildren")
+												 				{
+												 					database.ref('/users/' + key +'/profile/address').once('value').then(function(snapshot3) {
+												 					possible[counter]=snapshot3.val();
+												 					console.log(possible);
+												 					});
+												 				}
+															}
+															else
+															{
+									
+															}
+														});
+										      	});
+										  });
 							    		}
+
 							    	}
-							    </script
+							    </script>
 							</div>
 						</div>
 						<hr />
