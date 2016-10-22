@@ -105,10 +105,10 @@
 														var sname=names;
 														try
 														{
-															firebase.database().ref('/users/' + uid+'/profile').once('value').then(function(snapshot) {
+															database.ref('/users/' + uid+'/profile').once('value').then(function(snapshot) {
 															  if(snapshot.val()==null || snapshot.val().email=="")
 															  {
-																  firebase.database().ref('users/' + uid).update({
+																  database.ref('users/' + uid).update({
 																    email: email
 																  }).then(function(){
 															  		// Update successful.
@@ -125,7 +125,7 @@
 															  }
 															});
 															var vacancies=null;
-															firebase.database().ref('/users/' + uid+'/vacancies').once('value').then(function(snapshot) {
+															database.ref('/users/' + uid+'/vacancies').once('value').then(function(snapshot) {
 												 			if(snapshot.val()!=null)
 												 			{
 												 				vacancies=snapshot.val();
