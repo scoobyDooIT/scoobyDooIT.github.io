@@ -114,13 +114,19 @@
 							    		if(document.getElementsByName("gender")[0].checked==true)
 							    		{
 							    			var query = database.ref("users").orderByKey();
-											query.once("value").then(function(snapshot) {
+									        query.once("value").then(function(snapshot) {
     											snapshot.forEach(function(childSnapshot) {
-											      // childData will be the actual contents of the child
-											      var userData = childSnapshot.val();
-											      console.log(userData);
-											  });
-											});
+										      // key will be "ada" the first time and "alan" the second time
+										      var key = childSnapshot.key;
+										      console.log(key);
+										      // childData will be the actual contents of the child
+										      var childData = childSnapshot.val();
+										      console.log(childData);
+										      console.log(childData[0]);
+										      console.log(childData[1]);
+										      console.log(childData[2]);
+										  });
+										});
 							    		}
 							    		else
 							    		{
