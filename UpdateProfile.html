@@ -125,10 +125,11 @@
 															  }
 															});
 															var vacancies=null;
-															database.ref('/users/' + uid+'/vacancies').once('value').then(function(snapshot) {
+															database.ref('/users/' + uid+'/profile/vacancies').once('value').then(function(snapshot) {
 												 			if(snapshot.val()!=null)
 												 			{
 												 				vacancies=snapshot.val();
+												 				console.log("vacancies="+vacancies);
 															}
 															else
 															{
