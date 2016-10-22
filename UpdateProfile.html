@@ -101,6 +101,7 @@
 														var names = user.displayName;
 														var email = user.email;
 														var photoUrl = user.photoURL;
+														console.log("Users photo is "+user.photoURL);
 														var uid = user.uid;
 														var sname=names;
 														try
@@ -214,7 +215,7 @@
 															  console.log(error);
 															});
 														}
-														if(vacancies!="")
+														if(vacancies!=null)
 														{
 															var json = { };
 															json[0] = vacancies;
