@@ -223,6 +223,7 @@
 														}
 												 		if(enteredPhoto!="")
 												 		{
+												 			console.log("Trying to set enteredPhoto to:"+enteredPhoto);
 												 			user.updateProfile({
 														  		photoURL: enteredPhoto
 															}).then(function() {
