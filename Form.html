@@ -165,7 +165,7 @@
 												 						console.log(snapshot3.val());
 												 					var addressOne=snapshot3.val()[0].split(" ").join("+");
 															    	aClient = new HttpClient();
-																	aClient.get("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAZwhngAOclclgeCbYA1qt8UUxmA4-8XTA", function(response) {
+																	aClient.get("https://maps.googleapis.com/maps/api/geocode/json?address="+addressOne+"&key=AIzaSyAZwhngAOclclgeCbYA1qt8UUxmA4-8XTA", function(response) {
 																		jsonToPlay=response;
 																		var latToGo=JSON.parse(jsonToPlay).results[0].geometry.location.lat;
 																		var lngToGo=JSON.parse(jsonToPlay).results[0].geometry.location.lng;
