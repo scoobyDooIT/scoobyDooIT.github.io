@@ -159,6 +159,19 @@
 															}
 															document.getElementById("currentaddress").innerHTML=address;
 														});
+															var maxOccup=null;
+															database.ref('/users/' + uid+'/profile/maxOccup').once('value').then(function(snapshot) {
+												 			if(snapshot.val()!=null)
+												 			{
+												 				maxOccup=snapshot.val();
+												 				console.log("maxOccup="+maxOccup);
+															}
+															else
+															{
+																maxOccup="";
+															}
+															document.getElementById("currentMaxOccup").innerHTML=maxOccup;
+														});
 														}
 														catch(ex)
 														{
@@ -187,8 +200,9 @@
 												 		var enteredPhoto=document.getElementById("purl").value;
 												 		var userType=document.getElementById("type").value;
 												 		var vacancies=document.getElementById("vacancies").value;
+												 		var maxOccup=document.getElementById("maxoccup").value;
 												 		var address=document.getElementById("address").value;
-												 		var currentUserType=null;
+												 		var currentMaxOccup=null;
 												 		var currentaddress=null;
 												 		var currentvacancies=null;
 												 		var currentAvatar=null;
@@ -237,6 +251,13 @@
 															json[0] = vacancies;
 															console.log("Setting vacancies="+vacancies);
 															database.ref('users/' + uid+'/profile/vacancies').update(json);
+														}
+														if(maxOccup!="")
+														{
+															var json = {};
+															json[0] = maxOccup;
+															console.log("Setting maxOccup="+maxOccup);
+															database.ref('users/' + uid+'/profile/maxOccup').update(json);	
 														}
 														if(address!="")
 														{
@@ -295,6 +316,9 @@
 															  console.log(error);
 															});
 												 		}
+												 		var json1 = { };
+															json1[0] = user.displayName;
+															database.ref('users/' + uid+'/profile/name').update(json1);
 												 		var enteredEmail=document.getElementById("email").value;
 												 		if(enteredEmail!="")
 												 		{
@@ -317,6 +341,7 @@
 												 		document.getElementById("email").value="";
 												 		document.getElementById("vacancies").value="";
 												 		document.getElementById("address").value="";
+												 		document.getElementById("maxoccup").value="";
 												 		location.reload(); 
 											 		}
 											 		catch(ex)
@@ -339,7 +364,7 @@
 										    <strong>Address:</strong><span id="currentaddress"></span><br>
 										    <strong>Accepts:</strong> <span id="currenttype"></span><br>
 										    <strong>Vacancies:</strong> <span id="currentvacancies"></span><br>
-
+										    <strong>Maximum Occupancy:</strong><span id="currentMaxOccup"></span><br>
 										    <hr style="border: dashed 3px;" />
 
 										    <h2>Update Profile</h2>
@@ -361,6 +386,7 @@
 										    </select><br><br>
 
 										    <input type="text" id="vacancies" placeholder="Number of Meals OR Vacancies."><br><br>
+										    <input type="text" id="maxoccup" placeholder="Maximum Occupancy"><br><br>
 										    </div>
 										    
 										    <input type="submit" onclick="update();" value="Update Profile"><br><br>
