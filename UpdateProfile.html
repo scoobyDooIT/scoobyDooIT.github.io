@@ -157,7 +157,7 @@
 											 	{
 											 		try
 											 		{
-												 		var user = firebase.auth().currentUser;
+												 		var user = auth.currentUser;
 												 		var names = user.displayName;
 														var uid = user.uid;
 														var sname=names;
@@ -168,7 +168,7 @@
 												 		var vacancies=null;
 												 		var currentAvatar=null;
 												 		var currentEmail=null;
-												 		firebase.database().ref('/users/' + uid+'/profile').once('value').then(function(snapshot) {
+												 		database.ref('/users/' + uid+'/profile').once('value').then(function(snapshot) {
 												 			if(snapshot.val()!=null)
 												 			{
 																currentUserType=snapshot.val().userType;
@@ -181,7 +181,7 @@
 																currentEmail="";
 															}
 														});
-														firebase.database().ref('/users/' + uid+'/vacancies').once('value').then(function(snapshot) {
+														database.ref('/users/' + uid+'/vacancies').once('value').then(function(snapshot) {
 												 			if(snapshot.val()!=null)
 												 			{
 												 				vacancies="";
@@ -196,7 +196,7 @@
 														if(userType!=currentUserType)
 														{
 														//	console.log("setting userType")
-															firebase.database().ref('users/' + uid+'/profile').set({
+															database.ref('users/' + uid+'/profile').set({
 															    userType: userType
 															}).then(function() {
 															  // Update successful.
@@ -205,7 +205,7 @@
 															  // An error happened.
 															  console.log(error);
 															});
-															firebase.database().ref('users/' + uid+'/vacancies').set(null).then(function() {
+															database.ref('users/' + uid+'/vacancies').set(null).then(function() {
 															  // Update successful.
 															  console.log("successful"); 
 															}, function(error) {
@@ -217,7 +217,7 @@
 														{
 															var json = { };
 															json[0] = vacancies;
-															firebase.database().ref('users/' + uid+'/vacancies').update(json);
+															database.ref('users/' + uid+'/vacancies').update(json);
 														}
 												 		if(enteredPhoto!="")
 												 		{
@@ -281,7 +281,7 @@
 															  console.log(error);
 															});
 
-															firebase.database().ref('users/' + uid+'/profile').update({
+															database.ref('users/' + uid+'/profile').update({
 																email: enteredEmail
 															});
 												 		}
