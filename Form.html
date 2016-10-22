@@ -118,10 +118,10 @@
     											snapshot.forEach(function(childSnapshot) {
 										      // childData will be the actual contents of the child
 										      var childData = childSnapshot.val();
-										      console.log(childData.val());
+										      console.log(childData[1].userType);
 										      console.log(childData.val().userType);
-										      console.log(childData[1]);
-										      console.log(childData[2]);
+										      console.log(childData.key());
+										      console.log(childData.profile.userType);
 										  });
 										});
 							    		}
