@@ -121,15 +121,7 @@
 									    }
 									}
 
-								    function GenerateClosest(addresses)
-								    {
-								    	var addressOne=addresses[0].split(" ").join("+");
-								    	aClient = new HttpClient();
-										aClient.get("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAZwhngAOclclgeCbYA1qt8UUxmA4-8XTA", function(response) {
-										    console.log(response);
-										});
-								    	
-								    }
+								
 
 								  
 
@@ -159,7 +151,11 @@
 												 					counter++;
 												 					});
 												 					console.log(possible);
-												 					GenerateClosest(possible);
+												 					var addressOne=addresses[0].split(" ").join("+");
+															    	aClient = new HttpClient();
+																	aClient.get("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAZwhngAOclclgeCbYA1qt8UUxmA4-8XTA", function(response) {
+																	    console.log(response);
+																	});
 												 				}
 															}
 															else
