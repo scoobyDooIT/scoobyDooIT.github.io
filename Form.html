@@ -117,9 +117,9 @@
 									        query.once("value").then(function(snapshot) {
     											snapshot.forEach(function(childSnapshot) {
 										      // childData will be the actual contents of the child
-										      var childData = childSnapshot.val().profile;
-										      console.log(childData);
-										      console.log(childData.userType);
+										      var childData = childSnapshot.val();
+										      console.log(childData.val());
+										      console.log(childData.val().userType);
 										      console.log(childData[1]);
 										      console.log(childData[2]);
 										  });
