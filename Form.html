@@ -89,7 +89,7 @@
 <input type="radio" name="gender" value="Female">Female<br>
 									<br>
 									<input type="hidden" name="theHiddenBoolean" value="true">
-									<input type="button" onclick="GenerateClosest()">
+									<input type="button" onclick="FindAddresses()">
 							    </form>
 							    <script>
 							     // Initialize Firebase
@@ -108,8 +108,32 @@
 								      				console.log("in initApp");
 								      			}
 
+								     var HttpClient = function() {
+									    this.get = function(aUrl, aCallback) {
+									        var anHttpRequest = new XMLHttpRequest();
+									        anHttpRequest.onreadystatechange = function() { 
+									            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+									                aCallback(anHttpRequest.responseText);
+									        }
 
-							    	function GenerateClosest()
+									        anHttpRequest.open( "GET", aUrl, true );            
+									        anHttpRequest.send( null );
+									    }
+									}
+
+								    function GenerateClosest(addresses)
+								    {
+								    	var addressOne=addresses[0].split(" ").join("+");
+								    	aClient = new HttpClient();
+										aClient.get("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAZwhngAOclclgeCbYA1qt8UUxmA4-8XTA", function(response) {
+										    console.log(response);
+										});
+								    	
+								    }
+
+								  
+
+							    	function FindAddresses()
 							    	{
 							    		if(document.getElementsByName("gender")[0].checked==true)
 							    		{
@@ -135,6 +159,7 @@
 												 					counter++;
 												 					});
 												 					console.log(possible);
+												 					GenerateClosest(possible);
 												 				}
 															}
 															else
@@ -168,6 +193,7 @@
 												 					possible[counter]=snapshot3.val()[0];
 												 					counter++;
 												 					console.log(possible);
+												 					GenerateClosest(possible);
 												 					});
 												 				}
 															}
