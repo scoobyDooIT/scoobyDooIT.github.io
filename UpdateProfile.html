@@ -165,7 +165,6 @@
 												 		var userType=document.getElementById("type").value;
 												 		var vacancies=document.getElementById("vacancies").value;
 												 		var currentUserType=null;
-												 		var vacancies=null;
 												 		var currentAvatar=null;
 												 		var currentEmail=null;
 												 		database.ref('/users/' + uid+'/profile').once('value').then(function(snapshot) {
@@ -181,17 +180,7 @@
 																currentEmail="";
 															}
 														});
-														database.ref('/users/' + uid+'/vacancies').once('value').then(function(snapshot) {
-												 			if(snapshot.val()!=null)
-												 			{
-												 				vacancies="";
-																vacancies+=snapshot.val()+" ";
-															}
-															else
-															{
-																vacancies="";
-															}
-														});
+									
 														//console.log("userType="+userType+" currentUserType="+currentUserType);
 														if(userType!=currentUserType)
 														{
