@@ -50,7 +50,7 @@
 										<li><a href="Food.html">Current Information on Food</a></li>
 									</ul>
 								</li>
-								<li><a href="ShelterRegister.html">Register as Shelter or Food Source</a></li>
+								<li><a href="ShelterLogin.html">Login as Shelter or Food Source</a></li>
 								<li><a href="TestMyHomelessLikelihood.html">How likely am I to become homeless?</a></li>
 							</ul>
 						</nav>
@@ -75,16 +75,18 @@
 								<hr />
 							</div>
 							<div class="8u 12u(mobile) important(mobile)" id="content">
-								 <script>
-
-								 // Initialize Firebase
-								 var config = {
-								   apiKey: "AIzaSyDL5Fr4fbzimSwRT_mEXS6ZohVmXAociiY",
-								   authDomain: "ghvi-daa53.firebaseapp.com",
-								   databaseURL: "https://ghvi-daa53.firebaseio.com",
-								   storageBucket: "ghvi-daa53.appspot.com",
-								   messagingSenderId: "333277965318"
-								 };
+								<script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+								<script>
+								  // Initialize Firebase
+								  var config = {
+								    apiKey: "AIzaSyDL5Fr4fbzimSwRT_mEXS6ZohVmXAociiY",
+								    authDomain: "ghvi-daa53.firebaseapp.com",
+								    databaseURL: "https://ghvi-daa53.firebaseio.com",
+								    storageBucket: "ghvi-daa53.appspot.com",
+								    messagingSenderId: "333277965318"
+								  };
+								  firebase.initializeApp(config);
+					
 								 								      
 											      // Initialize the FirebaseUI Widget using Firebase.
 											      var app = firebase.initializeApp(config);
@@ -102,7 +104,7 @@
 											          firebase.auth.EmailAuthProvider.PROVIDER_ID
 											        ],
 											        // Terms of service url.
-											        'tosUrl': 'virtuschools.com',
+											        'tosUrl': 'scoobydooit.github.io',
 											      };
 
 											      // The start method will wait until the DOM is loaded.
