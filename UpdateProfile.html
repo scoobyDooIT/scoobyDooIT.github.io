@@ -165,6 +165,7 @@
 												 		var userType=document.getElementById("type").value;
 												 		var vacancies=document.getElementById("vacancies").value;
 												 		var currentUserType=null;
+												 		var currentvacancies=null;
 												 		var currentAvatar=null;
 												 		var currentEmail=null;
 												 		database.ref('/users/' + uid+'/profile').once('value').then(function(snapshot) {
@@ -180,7 +181,17 @@
 																currentEmail="";
 															}
 														});
-									
+														database.ref('/users/' + uid+'/profile/vacancies').once('value').then(function(snapshot) {
+												 			if(snapshot.val()!=null)
+												 			{
+												 				currentvacancies="";
+																currentvacancies+=snapshot.val()+" ";
+															}
+															else
+															{
+																currentvacancies="";
+															}
+														});
 														//console.log("userType="+userType+" currentUserType="+currentUserType);
 														if(userType!=currentUserType)
 														{
@@ -194,19 +205,13 @@
 															  // An error happened.
 															  console.log(error);
 															});
-															database.ref('users/' + uid+'/vacancies').set(null).then(function() {
-															  // Update successful.
-															  console.log("successful"); 
-															}, function(error) {
-															  // An error happened.
-															  console.log(error);
-															});
 														}
 														if(vacancies!="")
 														{
 															var json = { };
 															json[0] = vacancies;
-															database.ref('users/' + uid+'/vacancies').update(json);
+															console.log("Setting vacancies="+vacancies);
+															database.ref('users/' + uid+'/profile/vacancies').update(json);
 														}
 												 		if(enteredPhoto!="")
 												 		{
