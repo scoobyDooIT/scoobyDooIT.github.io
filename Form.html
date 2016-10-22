@@ -131,7 +131,7 @@
 												 				{
 												 					database.ref('/users/' + key +'/profile/address').once('value').then(function(snapshot3) {
 												 						console.log(snapshot3.val());
-												 					possible[counter]=snapshot3.val();
+												 					possible[counter]=snapshot3.val()[0];
 												 					counter++;
 												 					});
 												 					console.log(possible);
@@ -165,7 +165,7 @@
 												 				{
 												 					database.ref('/users/' + key +'/profile/address').once('value').then(function(snapshot3) {
 												 						console.log(snapshot3.val());
-												 					possible[counter]=snapshot3.val();
+												 					possible[counter]=snapshot3.val()[0];
 												 					counter++;
 												 					console.log(possible);
 												 					});
