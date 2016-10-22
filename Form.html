@@ -134,7 +134,7 @@
 								{
 									document.getElementById("daForm").style.visibility="hidden";
 									document.getElementById("daResult").style.visibility="visible";
-									document.getElementById("daResultP").innerHTML="The closest shelter to you is "+(minDistance*0.000621371)+" miles away at "+minAddress+". We have notified them you might be on the way.";
+									document.getElementById("daResultP").innerHTML="The closest shelter to you is "+(minDistance*0.000621371)+" miles away at "+minAddress.split("+").join(" ")+". We have notified them you might be on the way.";
 								}
 
 								function GetLocation() {
