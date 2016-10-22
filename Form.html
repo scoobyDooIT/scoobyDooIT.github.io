@@ -116,13 +116,10 @@
 							    			var query = database.ref("users").orderByKey();
 									        query.once("value").then(function(snapshot) {
     											snapshot.forEach(function(childSnapshot) {
-										      // key will be "ada" the first time and "alan" the second time
-										      var key = childSnapshot.key;
-										      console.log(key);
 										      // childData will be the actual contents of the child
-										      var childData = childSnapshot.val();
+										      var childData = childSnapshot.val().profile;
 										      console.log(childData);
-										      console.log(childData[0]);
+										      console.log(childData.userType);
 										      console.log(childData[1]);
 										      console.log(childData[2]);
 										  });
