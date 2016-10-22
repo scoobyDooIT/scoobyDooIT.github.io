@@ -111,7 +111,7 @@
 
 							    	function GenerateClosest()
 							    	{
-							    		if(document.getElementsByClassName("gender")[0].checked==true)
+							    		if(document.getElementsByName("gender")[0].checked==true)
 							    		{
 							    			var query = database.ref("users").orderByKey();
 											query.once("value").then(function(snapshot) {
