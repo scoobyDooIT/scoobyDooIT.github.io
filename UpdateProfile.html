@@ -121,7 +121,14 @@
 															  if(snapshot.val()!=null)
 															  {
 																  document.getElementById("currenttype").innerHTML=snapshot.val().userType;
-																  document.getElementById("currentemail").innerHTML=snapshot.val().email;
+																  if(snapshot.val().email!=null)
+																  {
+																  	document.getElementById("currentemail").innerHTML=snapshot.val().email;
+																  }
+																  else
+																  {
+																  	document.getElementById("currentemail").innerHTML=user.email;
+																  }
 															  }
 															});
 															var vacancies=null;
