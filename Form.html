@@ -93,7 +93,7 @@
 									<input type="hidden" name="theHiddenBoolean" value="true">
 									<input type="button" onclick="GetLocation()">
 							    </form>
-							    <div id="daResult" style="visibility:collapsed">
+							    <div id="daResult" style="display:none">
 							    	<p id="daResultP"></p>
 							    </div>
 							    <script>
@@ -132,8 +132,8 @@
 
 								function UpdatePage()
 								{
-									document.getElementById("daForm").style.visibility="collapsed";
-									document.getElementById("daResult").style.visibility="visible";
+									document.getElementById("daForm").style.display="none";
+									document.getElementById("daResult").style.display="inline";
 									document.getElementById("daResultP").innerHTML="The closest shelter to you is "+(minDistance*0.000621371)+" miles away at "+minAddress.split("+").join(" ")+". We have notified them you might be on the way.";
 									window.scrollTo(0,0);
 								}
