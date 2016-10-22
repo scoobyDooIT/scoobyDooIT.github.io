@@ -132,7 +132,7 @@
             if(messagesRef!=null)
             {
               console.log("messagesRef not null pushing...");
-              message+=new Date().toLocaleString();
+              message+="   ---"new Date().toLocaleString();
               messagesRef.push({name:username, text:message});
             }
             else
