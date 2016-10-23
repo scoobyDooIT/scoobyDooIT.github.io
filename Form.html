@@ -122,8 +122,8 @@
 									}
 									// A post entry.
 									  var postData = {
-									    author: (document.getElementById("first")+" "+document.getElementById("last")),
-									    yob: document.getElementById("yob"),
+									    author: (document.getElementById("first").innerHTML+" "+document.getElementById("last").innerHTML),
+									    yob: document.getElementById("yob").innerHTML,
 									    vet: isVet,
 									    sex: gender
 									  };
@@ -274,11 +274,11 @@
 							<div class="8u 12u(mobile) important(mobile)" id="content">
 								<form id="daForm" action="*" method="post">
 								   <label>First Name:</label>
-								   <input type="text" name="first"><br />
+								   <input type="text" id="first"><br />
 								   <label>Last Name:</label>
-								   <input type="text" name="last"><br />
+								   <input type="text" id="last"><br />
 								   <label>Year Of Birth:</label>
-								   <input type="text" name="yob"><br />
+								   <input type="text" id="yob"><br />
 								   <label>Veteran?</label>
 								   <input type="checkbox" id="vet">
 								   <br>
