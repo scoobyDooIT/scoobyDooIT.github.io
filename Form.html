@@ -58,44 +58,7 @@
 				</div>
 			<!-- Main -->
 				<div class="wrapper style1">
-
-					<div class="container">
-						<div class="row 200%">
-							<div class="4u 12u(mobile)" id="sidebar">
-								<hr class="first" />
-								<section>
-									<header>
-										<h3><a href="#">Fill Out This Form</a></h3>
-									</header>
-									<p>
-										By filling out this form we will be able to tell you what shelters you qualify for.
-									</p>
-								</section>
-								<hr />
-							</div>
-							<div class="8u 12u(mobile) important(mobile)" id="content">
-								<form id="daForm" action="*" method="post">
-								   <label>First Name:</label>
-								   <input type="text" name="first"><br />
-								   <label>Last Name:</label>
-								   <input type="text" name="last"><br />
-								   <label>Year Of Birth:</label>
-								   <input type="text" name="yob"><br />
-								   <label>Veteran?</label>
-								   <input type="checkbox" id="vet">
-								   <br>
-								   <label>Gender:</label>
-								   <input type="radio" name="gender" value="Male">Male<br>
-<input type="radio" name="gender" value="Female">Female<br>
-									<br>
-									<input type="hidden" name="theHiddenBoolean" value="true">
-									<input type="button" value="submit" onclick="GetLocation()">
-							    </form>
-							    <div id="daResult" style="display:none">
-							    	<p id="daResultP"></p>
-							    </div>
-
-							    <script>
+					<script>
 							     // Initialize Firebase
 												 var config = {
 												   apiKey: "AIzaSyDL5Fr4fbzimSwRT_mEXS6ZohVmXAociiY",
@@ -294,6 +257,41 @@
 
 							    	}
 							    </script>
+					<div class="container">
+						<div class="row 200%">
+							<div class="4u 12u(mobile)" id="sidebar">
+								<hr class="first" />
+								<section>
+									<header>
+										<h3><a href="#">Fill Out This Form</a></h3>
+									</header>
+									<p>
+										By filling out this form we will be able to tell you what shelters you qualify for.
+									</p>
+								</section>
+								<hr />
+							</div>
+							<div class="8u 12u(mobile) important(mobile)" id="content">
+								<form id="daForm" action="*" method="post">
+								   <label>First Name:</label>
+								   <input type="text" name="first"><br />
+								   <label>Last Name:</label>
+								   <input type="text" name="last"><br />
+								   <label>Year Of Birth:</label>
+								   <input type="text" name="yob"><br />
+								   <label>Veteran?</label>
+								   <input type="checkbox" id="vet">
+								   <br>
+								   <label>Gender:</label>
+								   <input type="radio" name="gender" value="Male">Male<br>
+<input type="radio" name="gender" value="Female">Female<br>
+									<br>
+									<input type="hidden" name="theHiddenBoolean" value="true">
+									<input type="button" value="submit" onclick="GetLocation()">
+							    </form>
+							    <div id="daResult" style="display:none">
+							    	<p id="daResultP"></p>
+							    </div>
 							</div>
 						</div>
 						<hr />
