@@ -1,0 +1,326 @@
+!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title> Food- Home Help</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ3lZi7-hsd1kDUzuQUzQnSRwmQstTy1k&libraries=geometry">
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<script src="https://www.gstatic.com/firebasejs/3.0.2/firebase.js"></script>
+		<script src="assets/js/jquery.alerts.js" type="text/javascript"></script>
+		<link href="assets/css/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+		<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/ui/0.4.0/firebase-ui-auth.js"></script>
+		<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/0.4.0/firebase-ui-auth.css" />
+
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body class="left-sidebar">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="index.html" id="logo">Home Help</a></h1>
+								<hr />
+								<p>We end chronic homelessness. For Help:</p>
+								<p>Text (314)667-4809</p>
+								<p>Call (314)667-4809</p>
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav style="background-color: #000000;" id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li>
+									<a href="Form.html">Get Help</a>
+									<ul>
+										<li><a href="Form.html">Help Form</a></li>
+										<li><a href="Food.html">Current Information on Food</a></li>
+									</ul>
+								</li>
+								<li><a href="ShelterLogin.html">Login as Shelter/Food Source</a></li>
+								<li><a href="TestMyHomelessLikelihood.html">Homeless Assessment</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<div class="row 200%">
+							<div class="4u 12u(mobile)" id="sidebar">
+								<hr class="first" />
+								<section>
+									<header>
+										<h3><a href="#">Nearest Food Source</a></h3>
+									</header>
+									<p>
+										Here's where a registered food provider is located.
+									</p>
+								</section>
+								<hr />
+							</div>
+							<div class="8u 12u(mobile) important(mobile)" id="content">
+							    <div id="daResult" style="display:none">
+							    	<p id="daResultP"></p>
+							    </div>
+							    <script>
+							     // Initialize Firebase
+												 var config = {
+												   apiKey: "AIzaSyDL5Fr4fbzimSwRT_mEXS6ZohVmXAociiY",
+												   authDomain: "ghvi-daa53.firebaseapp.com",
+												   databaseURL: "https://ghvi-daa53.firebaseio.com",
+												   storageBucket: "ghvi-daa53.appspot.com",
+												   messagingSenderId: "333277965318"
+												 };
+												var app = firebase.initializeApp(config);
+												var auth = app.auth();
+												var database = firebase.database();
+
+												var jsonToPlay=null;
+												var minDistance=999999999;
+							    				var minAddress=null;
+							    				var MealsAtMinAddress=null;
+
+								      			function initApp() {
+								      				console.log("in initApp");
+								      			}
+
+								     var HttpClient = function() {
+									    this.get = function(aUrl, aCallback) {
+									        var anHttpRequest = new XMLHttpRequest();
+									        anHttpRequest.onreadystatechange = function() { 
+									            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+									                aCallback(anHttpRequest.responseText);
+									        }
+
+									        anHttpRequest.open( "GET", aUrl, true );            
+									        anHttpRequest.send( null );
+									    }
+									}
+
+								function UpdatePage()
+								{
+									document.getElementById("daForm").style.display="none";
+									document.getElementById("daResult").style.display="inline";
+									document.getElementById("daResultP").innerHTML="The closest meal to you is "+(minDistance*0.000621371)+" miles away at "+minAddress.split("+").join(" ")+". They have "+ MealsAtMinAddress+" meals. We have notified them you might be on the way.";
+									window.scrollTo(0,0);
+								}
+
+								function GetLocation() {
+								    if (navigator.geolocation) {
+								        navigator.geolocation.getCurrentPosition(FindAddresses);
+								    } else {
+								        x.innerHTML = "Geolocation is not supported by this browser.";
+								    }
+								}
+
+								  
+
+							    	function FindAddresses(myPosition)
+							    	{
+							    		var myLat=myPosition.coords.latitude
+							    		console.log("myLat="+myLat);
+    									var myLong=myPosition.coords.longitude; 
+							    		console.log("myLong="+myLong);
+										var counter=0;
+							    		var query = database.ref("users").orderByKey();
+									    query.once("value").then(function(snapshot) {
+    										snapshot.forEach(function(childSnapshot) {
+    											var key = childSnapshot.key;
+    											console.log(key);
+    											var type=null;
+    											var address=null;
+										    	database.ref('/users/' + key +'/profile/userType').once('value').then(function(snapshot2) {
+													if(snapshot2.val()!=null)
+												 	{
+												 		console.log(snapshot2.val());
+												 		if(snapshot2.val()=="Food" || snapshot2.val()=="All")
+												 		{
+												 			var vacancies=null;
+												 			database.ref('/users/' + key +'/profile/vacancies').once('value').then(function(snapshot4) {
+												 				vacancies=snapshot4.val();
+												 			});
+												 			database.ref('/users/' + key +'/profile/address').once('value').then(function(snapshot3) {
+												 				console.log(snapshot3.val());
+												 				var addressOne=snapshot3.val()[0].split(" ").join("+");
+														    	aClient = new HttpClient();
+																aClient.get("https://maps.googleapis.com/maps/api/geocode/json?address="+addressOne+"&key=AIzaSyAZwhngAOclclgeCbYA1qt8UUxmA4-8XTA", function(response) {
+																		jsonToPlay=response;
+																		var latToGo=JSON.parse(jsonToPlay).results[0].geometry.location.lat;
+																		var lngToGo=JSON.parse(jsonToPlay).results[0].geometry.location.lng;
+																		var distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(myLat,myLong), new google.maps.LatLng(latToGo,lngToGo));
+																		if(distance<minDistance)
+																		{
+																			MealsAtMinAddress=vacancies;
+																			minDistance=distance;
+																			minAddress=addressOne;
+																			UpdatePage();
+																		}
+
+																	});
+																});
+												 				}
+															}
+															else
+															{
+									
+															}
+														});
+										      	});
+										  });
+							    		}
+							    </script>
+							</div>
+						</div>
+						<hr />
+				<!-- Carousel -->
+				<section class="carousel">
+					<div class="reel">
+
+						<article>
+							<a href="http://saintmarthas.org/" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://saintmarthas.org/">St. Martha's Hall</a></h3>
+							</header>
+							<p>We are here to help abused women and their children break the cycle of violence in their lives by offering safe, confidential shelter and services.</p>
+						</article>
+
+						<article>
+							<a href="http://www.stpatrickcenter.org/" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://www.stpatrickcenter.org/">St. Patrick's Center</a></h3>
+							</header>
+							<p>Individuals and families build permanent, positive change in their lives through safe and affordable housing, sound mental and physical health, and employment and financial stability.</p>
+						</article>
+
+						<article>
+							<a href="http://gracehillsettlement.org/" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://gracehillsettlement.org/">Grace Hill</a></h3>
+							</header>
+							<p>Grace Hill Settlement House works toward ensuring that every child, every family and every community has the opportunity to succeed.</p>
+						</article>
+
+						<article>
+							<a href="http://www.doorwayshousing.org/" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://www.doorwayshousing.org/">Doorways</a></h3>
+							</header>
+							<p>DOORWAYS’ Supportive Housing Facility (DSHF), opened in 1997 to serve people who were unable to live independently as a result of HIV/AIDS</p>
+						</article>
+
+						<article>
+							<a href="https://www.lydiashouse.org/" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+							<header>
+								<h3><a href="https://www.lydiashouse.org/">Lydia's House</a></h3>
+							</header>
+							<p>Lydia's House works in faith to end domestic violence by being a place of healing and a voice of hope for abused women and their children.</p>
+						</article>
+
+						<article>
+							<a href="http://www.hopehousestl.org/Pages/default.html" class="image featured"><img src="images/pic06.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://www.hopehousestl.org/Pages/default.html">St. Louis Transitional Hope House Inc.</a></h3>
+							</header>
+							<p>It is the mission of St. Louis Transitional Hope House, Inc. to assist each resident family in improving their living skills by providing training in: Job Skills, Life Skills, Health Care, and other support services that will enable them to live independently.</p>
+						</article>
+
+						<article>
+							<a href="http://www.ywcastlouis.org/site/c.elKSIbOWIkJ8H/b.8082301/k.BCAF/Home.htm" class="image featured"><img src="images/pic07.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://www.ywcastlouis.org/site/c.elKSIbOWIkJ8H/b.8082301/k.BCAF/Home.htm">YWCA</a></h3>
+							</header>
+							<p>Our YWCA empowers women by providing economic education, leadership  recognition, transitional housing, support for victims of sexual assault and domestic violence, early childhood education and by working for racial justice.</p>
+						</article>
+
+						<article>
+							<a href="http://twsh.org/" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://twsh.org/">The Womens Safe House</a></h3>
+							</header>
+							<p>The Women’s Safe House provides safe shelter and transitional living services to battered women and their dependent children.</p>
+						</article>
+
+						<article>
+							<a href="http://www.stl.unitedway.org/" class="image featured"><img src="images/pic09.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://www.stl.unitedway.org/">United Way</a></h3>
+							</header>
+							<p>Since 1922, the United Way of Greater St. Louis has partnered with local nonprofit agencies to identify critical issues, create partnerships, and raise funds to help people in Missouri and Illinois.</p>
+						</article>
+
+						<article>
+							<a href="http://humanitri.org/" class="image featured"><img src="images/pic10.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://humanitri.org/">Humanitri</a></h3>
+							</header>
+							<p>Humanitri seeks to move families and individuals from crisis and uncertainty to stability and self-sufficiency.</p>
+						</article>
+
+					</div>
+				</section>
+			</div>
+			
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="12u">
+
+								<!-- Contact -->
+									<section class="contact">
+										<header>
+											<h3>Want Success Stories?</h3>
+										</header>
+										<p>Follow and Visit Us on Social.</p>
+										<ul class="icons">
+											<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+											<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+											<li><a href="#" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
+										</ul>
+									</section>
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; ScoobyDooIt. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+										</ul>
+									</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.onvisible.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+	</body>
+</html>
