@@ -140,6 +140,40 @@
 								}
 
 								function GetLocation() {
+									var isVet=null;
+									if(document.getElementById("vet").checked==true)
+									{
+										isVet=1;
+									}
+									else
+									{
+										isVet=0;
+									}
+									var gender=null;
+									if(document.getElementsByName("gender")[0].checked==true)
+									{
+										gender="Male";
+									}
+									else
+									{
+										gender="Female";
+									}
+									// A post entry.
+									  var postData = {
+									    author: (document.getElementById("first")+" "+document.getElementById("last")),
+									    yob: document.getElementById("yob"),
+									    vet: isVet,
+									    sex: gender
+									  };
+										// Get a key for a new Post.
+										  var newPostKey = firebase.database().ref().child('posts').push().key;
+
+										  // Write the new post's data simultaneously in the posts list and the user's post list.
+										  var updates = {};
+										  updates['/posts/' + newPostKey] = postData;
+										  database.ref().update(updates);
+
+
 								    if (navigator.geolocation) {
 								        navigator.geolocation.getCurrentPosition(FindAddresses);
 								    } else {
