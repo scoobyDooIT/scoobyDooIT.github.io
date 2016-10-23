@@ -92,6 +92,7 @@
 							    <div id="daResult" style="display:none">
 							    	<p id="daResultP"></p>
 							    </div>
+							    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ3lZi7-hsd1kDUzuQUzQnSRwmQstTy1k&libraries=geometry">
 							    <script>
 							     // Initialize Firebase
 												 var config = {
@@ -162,7 +163,7 @@
 									    sex: gender
 									  };
 										// Get a key for a new Post.
-										  var newPostKey = firebase.database().ref().child('posts').push().key;
+										  var newPostKey = database.ref().child('posts').push().key;
 
 										  // Write the new post's data simultaneously in the posts list and the user's post list.
 										  var updates = {};
@@ -426,6 +427,6 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ3lZi7-hsd1kDUzuQUzQnSRwmQstTy1k&libraries=geometry">
+			
 	</body>
 </html>
