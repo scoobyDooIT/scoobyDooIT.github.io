@@ -23,7 +23,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
-	<body class="left-sidebar">
+	<body onload="GetLocation()" class="left-sidebar">
 		<div id="page-wrapper">
 
 			<!-- Header -->
@@ -100,6 +100,7 @@
 								      			function initApp() {
 								      				console.log("in initApp");
 								      			}
+								     
 
 								     var HttpClient = function() {
 									    this.get = function(aUrl, aCallback) {
