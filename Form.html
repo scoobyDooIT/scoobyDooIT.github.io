@@ -112,6 +112,7 @@
 												var jsonToPlay=null;
 												var minDistance=999999999;
 							    				var minAddress=null;
+							    				var vacenciesAtMinAddress=null;
 
 								      			function initApp() {
 								      				console.log("in initApp");
@@ -134,7 +135,7 @@
 								{
 									document.getElementById("daForm").style.display="none";
 									document.getElementById("daResult").style.display="inline";
-									document.getElementById("daResultP").innerHTML="The closest shelter to you is "+(minDistance*0.000621371)+" miles away at "+minAddress.split("+").join(" ")+". We have notified them you might be on the way.";
+									document.getElementById("daResultP").innerHTML="The closest shelter to you is "+(minDistance*0.000621371)+" miles away at "+minAddress.split("+").join(" ")+". They have "+ vacenciesAtMinAddress+"vacancies. We have notified them you might be on the way.";
 									window.scrollTo(0,0);
 								}
 
@@ -173,6 +174,10 @@
 												 				console.log(snapshot2.val());
 												 				if(snapshot2.val()=="All" || snapshot2.val()=="Men")
 												 				{
+												 					var vacancies=null;
+												 					database.ref('/users/' + key +'/profile/vacancies').once('value').then(function(snapshot4) {
+												 						vacancies=snapshot4.val();
+												 					});
 												 					database.ref('/users/' + key +'/profile/address').once('value').then(function(snapshot3) {
 												 						console.log(snapshot3.val());
 												 					var addressOne=snapshot3.val()[0].split(" ").join("+");
@@ -184,6 +189,7 @@
 																		var distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(myLat,myLong), new google.maps.LatLng(latToGo,lngToGo));
 																		if(distance<minDistance)
 																		{
+																			vacenciesAtMinAddress=vacancies;
 																			minDistance=distance;
 																			minAddress=addressOne;
 																			UpdatePage();
