@@ -1,20 +1,90 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Form For Help - Home Help</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body class="left-sidebar">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="index.html" id="logo">Home Help</a></h1>
+								<hr />
+								<p>We end chronic homelessness. For Help:</p>
+								<p>Text (314)667-4809</p>
+								<p>Call (314)667-4809</p>
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav style="background-color: #000000;" id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li>
+									<a href="Form.html">Help</a>
+									<ul>
+										<li><a href="Form.html">Help Form</a></li>
+										<li><a href="Food.html">Current Information on Food</a></li>
+									</ul>
+								</li>
+								<li><a href="ShelterLogin.html">Login as Shelter/Food Source</a></li>
+								<li><a href="TestMyHomelessLikelihood.html">Homeless Assessment</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<div class="row 200%">
+							<div class="4u 12u(mobile)" id="sidebar">
+								<hr class="first" />
+								<section>
+									<header>
+										<h3><a href="#">Are you on a path to homelessness?</a></h3>
+									</header>
+									<p>
+										Take a test to see if you have traits which lead to homelessness. Getting help before can help shorten and even prevent homelessness.
+									</p>
+								</section>
+								<hr />
+							</div>
+							<div class="8u 12u(mobile) important(mobile)" id="content">
+								
+								<!DOCTYPE html>
 
 <html>
 <head>
-Homeless Assessment<br>
+How Likely am I to become homeless?<br>
 </head>
 <meta charset="UTF-8">
 
 
-<body style="background-color:purple">
-Any Questions within this assessment that you feel like omitting please feel free to do so, but remember that this may affect the results of the assessment.<br>
-<form id="second">
+<body>
+Any Questions within this assessment that you feel like omitting please feel free to do so but remember that this may affect the results of the assessment.<br>
+
+
 
 <label id="Precurse">
 </label><br>
 
-
+<form id="third" style="display: none">
 <label id="P">
 </label><br>
 <a href="" id="PLink0">
@@ -23,6 +93,10 @@ Any Questions within this assessment that you feel like omitting please feel fre
 </a><br>
 <a href="" id="PLink2">
 </a><br>
+</form>
+
+
+<form id="fourth" style="display: none">
 <label id="DA">
 </label><br>
 <a href="" id="DALink0">
@@ -31,7 +105,9 @@ Any Questions within this assessment that you feel like omitting please feel fre
 </a><br>
 <a href="" id="DALink2">
 </a><br>
+</form>
 
+<form id="fifth" style="display: none">
 <label id="A">
 </label><br>
 <a href="" id="ALink0">
@@ -42,6 +118,9 @@ Any Questions within this assessment that you feel like omitting please feel fre
 </a><br>
 <a href="" id="ALink3">
 </a><br>
+</form>
+
+<form id="sixth" style="display: none">
 <label id="PTSD"> 
 </label><br>
 <a href="" id="PTSDLink0">
@@ -52,6 +131,9 @@ Any Questions within this assessment that you feel like omitting please feel fre
 </a><br>
 <a href="" id="PTSDLink3">
 </a><br>
+</form>
+
+<form id= "seventh" style="display: none">
 <label id="ADDHelp">
 </label><br>
 <a href="" id="ADDHelpLink0">
@@ -64,55 +146,63 @@ Any Questions within this assessment that you feel like omitting please feel fre
 </a><br>
 </form>
 
+
 <form id="first">
-<label> Have trouble with coworker </label><br>
-<input type="radio" name="DAQuestion0" value="0">Never 
-<input type="radio" name="DAQuestion0" value="1">Sometimes
-<input type="radio" name="DAQuestion0" value="2">Often<br>
-<label> Spend more time alone </label><br>
-<input type="radio" name="DAQuestion1" value="0">Never 
-<input type="radio" name="DAQuestion1" value="1">Sometimes
-<input type="radio" name="DAQuestion1" value="2">Often<br>
-<label> Tire easily, little energy </label><br>
-<input type="radio" name="DAQuestion2" value="0">Never 
-<input type="radio" name="DAQuestion2" value="1">Sometimes
-<input type="radio" name="DAQuestion2" value="2">Often<br>
-<label> Fidgety, unable to sit still </label><br>
-<input type="radio" name="DAQuestion3" value="0">Never 
-<input type="radio" name="DAQuestion3" value="1">Sometimes
-<input type="radio" name="DAQuestion3" value="2">Often<br>
-<label> Distract easily </label><br>
-<input type="radio" name="DAQuestion4" value="0">Never 
-<input type="radio" name="DAQuestion4" value="1">Sometimes
-<input type="radio" name="DAQuestion4" value="2">Often<br>
-<label> Are afraid of new situations</label><br>
-<input type="radio" name="DAQuestion5" value="0">Never 
-<input type="radio" name="DAQuestion5" value="1">Sometimes
-<input type="radio" name="DAQuestion5" value="2">Often<br>
-<label> Are irritable, angry </label><br>
-<input type="radio" name="DAQuestion6" value="0">Never 
-<input type="radio" name="DAQuestion6" value="1">Sometimes
-<input type="radio" name="DAQuestion6" value="2">Often<br>
-<label> Feel hopeless </label><br>
-<input type="radio" name="DAQuestion7" value="0">Never 
-<input type="radio" name="DAQuestion7" value="1">Sometimes
-<input type="radio" name="DAQuestion7" value="2">Often<br>
 <label> Less interested in friends </label><br>
 <input type="radio" name="DAQuestion8" value="0">Never 
 <input type="radio" name="DAQuestion8" value="1">Sometimes
 <input type="radio" name="DAQuestion8" value="2">Often<br>
+<label> Spend more time alone </label><br>
+<input type="radio" name="DAQuestion1" value="0">Never 
+<input type="radio" name="DAQuestion1" value="1">Sometimes
+<input type="radio" name="DAQuestion1" value="2">Often<br>
+
+<label>Felt numb or detached from others, activities, or your surroundings?</label><br>
+<input type="radio" name="PTSDQuestion3" value="0">No
+<input type="radio" name="PTSDQuestion3" value="1">Yes<br>
+<label> Fidgety, unable to sit still </label><br>
+<input type="radio" name="DAQuestion3" value="0">Never 
+<input type="radio" name="DAQuestion3" value="1">Sometimes
+<input type="radio" name="DAQuestion3" value="2">Often<br>
+<label>Have people annoyed you by criticizing your drinking or drug use? </label><br>
+<input type="radio" name="AQuestion1" value="0">No
+<input type="radio" name="AQuestion1" value="1">Yes<br>
+<label> Are afraid of new situations</label><br>
+<input type="radio" name="DAQuestion5" value="0">Never 
+<input type="radio" name="DAQuestion5" value="1">Sometimes
+<input type="radio" name="DAQuestion5" value="2">Often<br>
+<label>Have you had experiences with telepathy, psychic forces, or fortune telling?<br> When this happens, I feel frightened, concerned, or it causes problems for me:(If No select N/A)</label><br>
+<input type="radio" name="PQuestion2" value="0">N/A<br>
+<input type="radio" name="PQuestion2" value="1">Strongly disagree<br>
+<input type="radio" name="PQuestion2" value="2">Disagree<br>
+<input type="radio" name="PQuestion2" value="3">Neutral<br>
+<input type="radio" name="PQuestion2" value="4">Agree<br>
+<input type="radio" name="PQuestion2" value="5">Strongly agree<br>
+
+<label>Do you have difficulty getting your point across, because you ramble or go off the track a lot when you talk?<br>When this happens, I feel frightened, concerned, or it causes problems for me:(If No select N/A)</label><br>
+<input type="radio" name="PQuestion5" value="0">N/A<br>
+<input type="radio" name="PQuestion5" value="1">Strongly disagree<br>
+<input type="radio" name="PQuestion5" value="2">Disagree<br>
+<input type="radio" name="PQuestion5" value="3">Neutral<br>
+<input type="radio" name="PQuestion5" value="4">Agree<br>
+<input type="radio" name="PQuestion5" value="5">Strongly agree<br>
+<label> Feel hopeless </label><br>
+<input type="radio" name="DAQuestion7" value="0">Never 
+<input type="radio" name="DAQuestion7" value="1">Sometimes
+<input type="radio" name="DAQuestion7" value="2">Often<br>
+
 <label> Down on yourself </label><br>
 <input type="radio" name="DAQuestion9" value="0">Never 
 <input type="radio" name="DAQuestion9" value="1">Sometimes
 <input type="radio" name="DAQuestion9" value="2">Often<br>
----------------------------------<br>
 <label>Have you ever felt that you ought to cut down on your drinking or drug use? </label><br>
 <input type="radio" name="AQuestion0" value="0">No
 <input type="radio" name="AQuestion0" value="1">Yes<br>
 
-<label>Have people annoyed you by criticizing your drinking or drug use? </label><br>
-<input type="radio" name="AQuestion1" value="0">No
-<input type="radio" name="AQuestion1" value="1">Yes<br>
+<label> Have trouble with coworker </label><br>
+<input type="radio" name="DAQuestion0" value="0">Never 
+<input type="radio" name="DAQuestion0" value="1">Sometimes
+<input type="radio" name="DAQuestion0" value="2">Often<br>
 
 <label>Have you ever felt bad or guilty about your drinking or drug use?
 </label><br>
@@ -122,7 +212,7 @@ Any Questions within this assessment that you feel like omitting please feel fre
 <label>Have you ever had a drink or used drugs first thing in the morning to steady your nerves or to get rid of a hangover?</label><br>
 <input type="radio" name="AQuestion3" value="0">No
 <input type="radio" name="AQuestion3" value="1">Yes<br>
-------------------<br>
+
 <label>Do familiar surroundings sometimes seem strange, confusing, threatening or unreal to you?<br>When this happens, I feel frightened, concerned, or it causes problems for me:(If No select N/A)</label><br>
 <input type="radio" name="PQuestion0" value="0">N/A<br>
 <input type="radio" name="PQuestion0" value="1">Strongly disagree<br>
@@ -137,13 +227,15 @@ Any Questions within this assessment that you feel like omitting please feel fre
 <input type="radio" name="PQuestion1" value="3">Neutral<br>
 <input type="radio" name="PQuestion1" value="4">Agree<br>
 <input type="radio" name="PQuestion1" value="5">Strongly agree<br>
-<label>Have you had experiences with telepathy, psychic forces, or fortune telling?<br> When this happens, I feel frightened, concerned, or it causes problems for me:(If No select N/A)</label><br>
-<input type="radio" name="PQuestion2" value="0">N/A<br>
-<input type="radio" name="PQuestion2" value="1">Strongly disagree<br>
-<input type="radio" name="PQuestion2" value="2">Disagree<br>
-<input type="radio" name="PQuestion2" value="3">Neutral<br>
-<input type="radio" name="PQuestion2" value="4">Agree<br>
-<input type="radio" name="PQuestion2" value="5">Strongly agree<br>
+
+<label>Were constantly on guard, watchful, or easily startled?</label><br>
+<input type="radio" name="PTSDQuestion2" value="0">No
+<input type="radio" name="PTSDQuestion2" value="1">Yes<br>
+
+<label> Tire easily, little energy </label><br>
+<input type="radio" name="DAQuestion2" value="0">Never 
+<input type="radio" name="DAQuestion2" value="1">Sometimes
+<input type="radio" name="DAQuestion2" value="2">Often<br>
 <label>Do things that you see appear different from the way they usually do?<br> When this happens, I feel frightened, concerned, or it causes problems for me:(If No select N/A)</label><br>
 <input type="radio" name="PQuestion3" value="0">N/A<br>
 <input type="radio" name="PQuestion3" value="1">Strongly disagree<br>
@@ -158,13 +250,10 @@ Any Questions within this assessment that you feel like omitting please feel fre
 <input type="radio" name="PQuestion4" value="3">Neutral<br>
 <input type="radio" name="PQuestion4" value="4">Agree<br>
 <input type="radio" name="PQuestion4" value="5">Strongly agree<br>
-<label>Do you have difficulty getting your point across, because you ramble or go off the track a lot when you talk?<br>When this happens, I feel frightened, concerned, or it causes problems for me:(If No select N/A)</label><br>
-<input type="radio" name="PQuestion5" value="0">N/A<br>
-<input type="radio" name="PQuestion5" value="1">Strongly disagree<br>
-<input type="radio" name="PQuestion5" value="2">Disagree<br>
-<input type="radio" name="PQuestion5" value="3">Neutral<br>
-<input type="radio" name="PQuestion5" value="4">Agree<br>
-<input type="radio" name="PQuestion5" value="5">Strongly agree<br>
+<label> Are irritable, angry </label><br>
+<input type="radio" name="DAQuestion6" value="0">Never 
+<input type="radio" name="DAQuestion6" value="1">Sometimes
+<input type="radio" name="DAQuestion6" value="2">Often<br>
 <label>Do you sometimes feel suddenly distracted by distant sounds that you are not normally aware of?<br>When this happens, I feel frightened, concerned, or it causes problems for me:(If No select N/A)</label><br>
 <input type="radio" name="PQuestion6" value="0">N/A<br>
 <input type="radio" name="PQuestion6" value="1">Strongly disagree<br>
@@ -179,6 +268,10 @@ Any Questions within this assessment that you feel like omitting please feel fre
 <input type="radio" name="PQuestion7" value="3">Neutral<br>
 <input type="radio" name="PQuestion7" value="4">Agree<br>
 <input type="radio" name="PQuestion7" value="5">Strongly agree<br>
+
+<label>Tried hard not to think about it or went out of your way to avoid situations that reminded you of it?</label><br>
+<input type="radio" name="PTSDQuestion1" value="0">No
+<input type="radio" name="PTSDQuestion1" value="1">Yes<br>
 <label>Do you feel that other people are watching you or talking about you?<br>When this happens, I feel frightened, concerned, or it causes problems for me:(If No select N/A</label><br>
 <input type="radio" name="PQuestion8" value="0">N/A<br>
 <input type="radio" name="PQuestion8" value="1">Strongly disagree<br>
@@ -194,18 +287,14 @@ Any Questions within this assessment that you feel like omitting please feel fre
 <input type="radio" name="PQuestion9" value="4">Agree<br>
 <input type="radio" name="PQuestion9" value="5">Strongly agree<br>
 
-<label>Have you had nightmares about it or thought about it when you did not want to?</label><br>
+<label>Have had nightmares about it or thought about it when you did not want to?</label><br>
 <input type="radio" name="PTSDQuestion0" value="0">No
 <input type="radio" name="PTSDQuestion0" value="1">Yes<br>
-<label>Tried hard not to think about it or went out of your way to avoid situations that reminded you of it?</label><br>
-<input type="radio" name="PTSDQuestion1" value="0">No
-<input type="radio" name="PTSDQuestion1" value="1">Yes<br>
-<label>Were constantly on guard, watchful, or easily startled?</label><br>
-<input type="radio" name="PTSDQuestion2" value="0">No
-<input type="radio" name="PTSDQuestion2" value="1">Yes<br>
-<label>Felt numb or detached from others, activities, or your surroundings?</label><br>
-<input type="radio" name="PTSDQuestion3" value="0">No
-<input type="radio" name="PTSDQuestion3" value="1">Yes<br>
+
+<label> Distract easily </label><br>
+<input type="radio" name="DAQuestion4" value="0">Never 
+<input type="radio" name="DAQuestion4" value="1">Sometimes
+<input type="radio" name="DAQuestion4" value="2">Often<br>
 <br>
 <br>
 <button type="button" onclick= "myFunction()">
@@ -337,10 +426,9 @@ while (Pcounter != 6){
 	Pcounter++;
 }
 
-document.getElementById("first").style.visibility = "hidden";
-
+document.getElementById("first").style.display = "none";
 if (PQuestion > 10){
-document.getElementById("P").innerHTML = "Psychosis";
+document.getElementById("P").innerHTML = "Psychosis<br>Psychosis is a mental health disorder that is usually caused by misses of both alcohol or drugs. Psychosis also involves schizophrenia bipolar disorders and delusions. I you seek help to overcome these obstacles please check out the websites below:"  ;
 document.getElementById("PLink0").href = "https://medlineplus.gov/ency/article/001553.htm";
 document.getElementById("PLink0").innerHTML ="MedlinePlus";
 
@@ -349,12 +437,11 @@ document.getElementById("PLink1").innerHTML ="Livestrong";
 
 document.getElementById("PLink2").href = "http://www.nami.org/Learn-More/Mental-Health-Conditions/Early-Psychosis-and-Psychosis/Treatment";
 document.getElementById("PLink2").innerHTML ="NAMI";
-
+document.getElementById("third").style.display = "inline";
 PassedAll = false;
 }
-
 if (AQuestion > 2){
-document.getElementById("A").innerHTML = "Alcohol and/or drug abuse ";
+document.getElementById("A").innerHTML = "Alcohol and/or drug abuse<br>Alcohol and Drug abuse is the most neglected disorders that people may have and if you are a person that has this sign please look at the websites below or talk to a specialist to make sure your health and your overall life is alright. ";
 
 document.getElementById("ALink0").href = "https://www.na.org";
 document.getElementById("ALink0").innerHTML ="NA";
@@ -366,11 +453,11 @@ document.getElementById("ALink2").href = "https://www.ncadd.org/about-addiction"
 document.getElementById("ALink2").innerHTML ="NCADD";
 document.getElementById("ALink3").href = "http://stlna.org";
 document.getElementById("ALink3").innerHTML ="STLNA";
+document.getElementById("fifth").style.display="inline";
 PassedAll = false;
 }
-
 if (PTSDQuestion > 2){
-document.getElementById("PTSD").innerHTML = "Post Tramatic Stress Disorder ";
+document.getElementById("PTSD").innerHTML = "Post Tramatic Stress Disorder<br>PTSD is one of the most things that veterans suffer from and not only veterans show symptoms of PTSD. Please look into talking to a specialist of some sort and read the articles below to better understand whether or not you do have PTSD. ";
 
 document.getElementById("PTSDLink0").href = "https://www.nimh.nih.gov/health/topics/post-traumatic-stress-disorder-ptsd/index.shtml";
 document.getElementById("PTSDLink0").innerHTML ="NIMH";
@@ -382,12 +469,11 @@ document.getElementById("PTSDLink2").href = "http://www.ptsd.va.gov";
 document.getElementById("PTSDLink2").innerHTML ="PTSD.va.gov";
 document.getElementById("PTSDLink3").href = "http://www.webmd.com/mental-health/post-traumatic-stress-disorder";
 document.getElementById("PTSDLink3").innerHTML ="WebMD";
-
+document.getElementById("sixth").style.display= "inline";
 PassedAll = false;
 }
-
 if (DAQuestion > 8){
-document.getElementById("DA").innerHTML = "Depression and/or anxeity";
+document.getElementById("DA").innerHTML = "Depression and/or anxeity<br>Depression and Anxiety are a couple of the hidden disadvantages people have in the world. These disadvantages can lead to unemployment or even have worse consequences. If you feel that you need help in order to coupe with these disadvantages please feel free to visit the websites below:";
 
 document.getElementById("DALink0").href = "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4533896/";
 document.getElementById("DALink0").innerHTML ="NCBI";
@@ -397,17 +483,20 @@ document.getElementById("DALink1").innerHTML ="NIMH";
 
 document.getElementById("DALink2").href = "https://www.adaa.org/tips-manage-anxiety-and-stress";
 document.getElementById("DALink2").innerHTML ="ADAA";
+document.getElementById("fourth").style.display="inline";
 PassedAll = false;
 }
    
    if (PassedAll == true){
   PrecurseString = "With our assement we see no signs of you potientally becoming homeless but we ask that you seek counceling from any professionals. Here is a list of websites that you may be interested in if you do seek counceling: ";
+  
    } 
    else{
    	PrecurseString = "There is a possibility that you may become homeless in the near future. The following are common behavioral signs that you may have that are also lead to becoming homelesss:";
    	document.getElementById("ADDHelp").innerHTML = "More Help? Look Below:";
    	
    }
+   document.getElementById("seventh").style.display="inline";
    document.getElementById("ADDHelpLink0").href = "http://dmh.mo.gov/slprc/";
    	document.getElementById("ADDHelpLink0").innerHTML = "DMH";
    	document.getElementById("ADDHelpLink1").href = "http://centerpointehospital.com";
@@ -416,8 +505,8 @@ PassedAll = false;
    	document.getElementById("ADDHelpLink2").innerHTML = "Mercy";
    	document.getElementById("ADDHelpLink3").href = "http://www.who.int/mental_health/evidence/en/prevention_of_mental_disorders_sr.pdf";
    	document.getElementById("ADDHelpLink3").innerHTML = "WHO";
-
    document.getElementById("Precurse").innerHTML = PrecurseString;
+   
    window.scrollTo(0,0);
 
 	}
@@ -427,4 +516,141 @@ PassedAll = false;
 
 </div>
 </body>
+</html>
+						</div>
+						<hr />
+				<!-- Carousel -->
+				<section class="carousel">
+					<div class="reel">
+
+						<article>
+							<a href="http://saintmarthas.org/" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://saintmarthas.org/">St. Martha's Hall</a></h3>
+							</header>
+							<p>We are here to help abused women and their children break the cycle of violence in their lives by offering safe, confidential shelter and services.</p>
+						</article>
+
+						<article>
+							<a href="http://www.stpatrickcenter.org/" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://www.stpatrickcenter.org/">St. Patrick's Center</a></h3>
+							</header>
+							<p>Individuals and families build permanent, positive change in their lives through safe and affordable housing, sound mental and physical health, and employment and financial stability.</p>
+						</article>
+
+						<article>
+							<a href="http://gracehillsettlement.org/" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://gracehillsettlement.org/">Grace Hill</a></h3>
+							</header>
+							<p>Grace Hill Settlement House works toward ensuring that every child, every family and every community has the opportunity to succeed.</p>
+						</article>
+
+						<article>
+							<a href="http://www.doorwayshousing.org/" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://www.doorwayshousing.org/">Doorways</a></h3>
+							</header>
+							<p>DOORWAYS’ Supportive Housing Facility (DSHF), opened in 1997 to serve people who were unable to live independently as a result of HIV/AIDS</p>
+						</article>
+
+						<article>
+							<a href="https://www.lydiashouse.org/" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+							<header>
+								<h3><a href="https://www.lydiashouse.org/">Lydia's House</a></h3>
+							</header>
+							<p>Lydia's House works in faith to end domestic violence by being a place of healing and a voice of hope for abused women and their children.</p>
+						</article>
+
+						<article>
+							<a href="http://www.hopehousestl.org/Pages/default.html" class="image featured"><img src="images/pic06.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://www.hopehousestl.org/Pages/default.html">St. Louis Transitional Hope House Inc.</a></h3>
+							</header>
+							<p>It is the mission of St. Louis Transitional Hope House, Inc. to assist each resident family in improving their living skills by providing training in: Job Skills, Life Skills, Health Care, and other support services that will enable them to live independently.</p>
+						</article>
+
+						<article>
+							<a href="http://www.ywcastlouis.org/site/c.elKSIbOWIkJ8H/b.8082301/k.BCAF/Home.htm" class="image featured"><img src="images/pic07.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://www.ywcastlouis.org/site/c.elKSIbOWIkJ8H/b.8082301/k.BCAF/Home.htm">YWCA</a></h3>
+							</header>
+							<p>Our YWCA empowers women by providing economic education, leadership  recognition, transitional housing, support for victims of sexual assault and domestic violence, early childhood education and by working for racial justice.</p>
+						</article>
+
+						<article>
+							<a href="http://twsh.org/" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://twsh.org/">The Women's Safe House</a></h3>
+							</header>
+							<p>The Women’s Safe House provides safe shelter and transitional living services to battered women and their dependent children.</p>
+						</article>
+
+						<article>
+							<a href="http://www.stl.unitedway.org/" class="image featured"><img src="images/pic09.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://www.stl.unitedway.org/">United Way</a></h3>
+							</header>
+							<p>Since 1922, the United Way of Greater St. Louis has partnered with local nonprofit agencies to identify critical issues, create partnerships, and raise funds to help people in Missouri and Illinois.</p>
+						</article>
+
+						<article>
+							<a href="http://humanitri.org/" class="image featured"><img src="images/pic10.jpg" alt="" /></a>
+							<header>
+								<h3><a href="http://humanitri.org/">Humanitri</a></h3>
+							</header>
+							<p>Humanitri seeks to move families and individuals from crisis and uncertainty to stability and self-sufficiency.</p>
+						</article>
+
+					</div>
+				</section>
+			</div>
+			
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="12u">
+
+								<!-- Contact -->
+									<section class="contact">
+										<header>
+											<h3>Want Success Stories?</h3>
+										</header>
+										<p>Follow and Visit Us on Social.</p>
+										<ul class="icons">
+											<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+											<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+											<li><a href="#" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
+										</ul>
+									</section>
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; ScoobyDooIt. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+										</ul>
+									</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.onvisible.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+	</body>
 </html>
