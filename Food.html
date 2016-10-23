@@ -117,7 +117,6 @@
 
 								function UpdatePage()
 								{
-									document.getElementById("daForm").style.display="none";
 									document.getElementById("daResult").style.display="inline";
 									document.getElementById("daResultP").innerHTML="The closest meal to you is "+(minDistance*0.000621371)+" miles away at "+minAddress.split("+").join(" ")+". They have "+ MealsAtMinAddress+" meals. We have notified them you might be on the way.";
 									window.scrollTo(0,0);
